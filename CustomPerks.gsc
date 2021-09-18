@@ -32,7 +32,7 @@ InitialiseData()
     player.custom_perks = array();
 }
 
-//
+// Fired whenever a player connects
 onPlayerConnect()
 {
     //
@@ -87,14 +87,17 @@ RedrawHUD()
         perk.hudobject = player drawshader(perk.icon, x, 320, 24, 25, perk.colour, 100, 0);
     }
 }
+
+// Constantly redraw the HUD
 ConstantRedrawHUD()
 {
     //
     player = self;
 
-    //
+    // Constant Loop
     while (true)
     {
+        //
         player RedrawHUD();
     }
 }
