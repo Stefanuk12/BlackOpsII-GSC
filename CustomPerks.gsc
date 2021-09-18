@@ -10,7 +10,7 @@ Credits: Sorex Project - Perk Ideas
 init()
 {
     preloadAssets();
-	level thread onPlayerConnect();
+    level thread onPlayerConnect();
     thread PerkClass::startAllMachines();
 }
 
@@ -18,7 +18,7 @@ init()
 preloadAssets()
 {
     PrecacheModel("collision_geo_cylinder_32x128_standard");
-	PrecacheModel("zombie_perk_bottle_whoswho");
+    PrecacheModel("zombie_perk_bottle_whoswho");
 }
 
 // Initialises all of the data for the player
@@ -36,19 +36,19 @@ InitialiseData()
 onPlayerConnect()
 {
     //
-	level endon("end_game");
+    level endon("end_game");
     self endon("disconnect");
 
     // Constant Loop
-	while (true)
-	{
+    while (true)
+    {
         // Wait until a new player connects
-		level waittill("connected", player);
+        level waittill("connected", player);
 
         //
         player InitialiseData();
         player thread ConstantRedrawHUD();
-	}
+    }
 }
 
 // Redraw HUD
@@ -117,7 +117,7 @@ PerkClass = spawnstruct();
         Perk.hudobject = undefined;
         Perk.icon = icon || "specialty_juggernaut_zombies";
         Perk.colour = colour || (1, 1, 1);
-        
+
         // Default vending data
         if (!vendingdata)
         {
@@ -151,7 +151,7 @@ PerkClass = spawnstruct();
         self = _perk;
 
         // Loop through custom perks
-        foreach(perk in player.custom_perks)
+        foreach (perk in player.custom_perks)
         {
             // Find perk
             if (perk.name == self.name)
@@ -272,8 +272,8 @@ PerkClass = spawnstruct();
             if (player self::has(self))
             {
                 level.Trigger hide();
-            } 
-            else 
+            }
+            else
             {
                 level.Trigger show();
             }
@@ -307,7 +307,7 @@ PerkClass = spawnstruct();
     // Spawns all the perk machines (static method)
     startAllMachines()
     {
-        foreach(self in level.custom_perks)
+        foreach (self in level.custom_perks)
         {
             self::spawnMachine(self);
         }
@@ -391,13 +391,13 @@ AmmoRegen = PerkClass.new("ammo_regen", "Ammo Regen", 2500);
         //
         player = self;
         self = _perk;
-        
+
         // Constant loop
         while (self.enabled)
         {
             // Wait for a zombie to be killed
             player waittill("zom_kill");
-            
+
             // Vars
             CurrentWeapon = player getCurrentWeapon();
 
@@ -465,7 +465,7 @@ EarnMoney = PerkClass.new("earn_money", "Earn Money", 3000);
         //
         player = self;
         self = _perk;
-    
+
         // Constant loop
         while (self.enabled)
         {
