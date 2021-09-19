@@ -121,15 +121,16 @@ PerkClass = spawnstruct();
         Perk.icon = icon || "specialty_juggernaut_zombies";
         Perk.colour = colour || (1, 1, 1);
 
-        // Default vending data
+        // Default vending data / example
         if (!vendingdata)
         {
             vendingdata = spawnstruct();
             vendingdata.model = "zombie_vending_sleight";
             vendingdata.origin = (1149, -215, -304);
             vendingdata.angles = (0, 180, 0);
+
+            Perk.vendingdata["zm_transit"] = vendingdata;
         }
-        Perk.vendingdata = vendingdata;
 
         // Add methods
         Perk.start = ::start;
